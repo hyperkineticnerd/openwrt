@@ -33,6 +33,12 @@ platform_copy_config() {
 	itus,shield-router)
 		platform_copy_config_helper /dev/mmcblk1p1
 		;;
+	ubnt,sgpro | \
+	unifi,sgpro | \
+	sgpro | \
+	erpro)
+		platform_copy_config_helper /dev/mmcblk0p1
+		;;
 	ubnt,edgerouter-4|\
 	ubnt,edgerouter-6p)
 		platform_copy_config_helper /dev/mmcblk0p1
@@ -97,6 +103,12 @@ platform_do_upgrade() {
 	itus,shield-router)
 		kernel=ItusrouterImage
 		;;
+	ubnt,sgpro | \
+	unifi,sgpro | \
+	sgpro | \
+	erpro)
+		kernel=mmcblk0p1
+		;;
 	*)
 		return 1
 	esac
@@ -116,6 +128,9 @@ platform_check_image() {
 
 	case "$board" in
 	er | \
+	ubnt,sgpro | \
+	unifi,sgpro | \
+	erpro | \
 	erlite | \
 	itus,shield-router | \
 	ubnt,edgerouter-4 | \

@@ -82,4 +82,13 @@ define Device/ubnt_edgerouter-lite
 endef
 TARGET_DEVICES += ubnt_edgerouter-lite
 
+ERPRO_CMDLINE:=-mtdparts=phys_mapped_flash:640k(boot0)ro,640k(boot1)ro,64k(eeprom)ro root=/dev/mmcblk0p2 rootfstype=squashfs,ext4 rootwait
+define Device/ubnt_edgerouter-pro
+  DEVICE_VENDOR := Ubiquiti
+  DEVICE_MODEL := EdgeRouter Pro
+  BOARD_NAME := erpro
+  CMDLINE := $(ERPRO_CMDLINE)
+endef
+TARGET_DEVICES += ubnt_edgerouter-pro
+
 $(eval $(call BuildImage))

@@ -25,6 +25,11 @@ octeon_move_config() {
 		ubnt,edgerouter-6p)
 			move_config "/dev/mmcblk0p1"
 			;;
+		ubnt,sgpro | \
+		unifi,sgpro | \
+		erpro)
+			move_config "/dev/mmcblk0p1"
+			;;
 	esac
 }
 
